@@ -368,7 +368,10 @@ local FontAttributes = {
 ---@field state "Charging" | "Discharging" | "Empty" | "Full" | "Unknown"
 
 ---@class WeztermPlugin
----@field require fun(url: string): any   -- 'require' function: takes a URL (string) and returns some result (any type)
+---@class PluginResponse
+---@field apply_to_config fun(config: Config, ...: any): any Function that accepts at least a config builder parameter, but may pass other parameters, or a lua table with a `config` field that maps to a config build parameter.
+
+---@field require fun(url: string): PluginResponse Takes a plugin repo URL (string). This plugin has to return a `apply_to_config` function that accepts at least a config builder parameter
 ---@field list fun(): Plugin[]            -- 'list' function: returns an array of Plugin objects
 ---@field update_all fun(): nil           -- 'update_all' function: performs updates, returns nothing
 

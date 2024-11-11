@@ -224,6 +224,7 @@ local Palette = {
 			italic = true,
 		},
 	},
+
 }
 
 ---@alias FontWeight "Thin" | "ExtraLight" | "Light" | "DemiLight" | "Book" | "Regular" | "Medium" | "DemiBold" | "Bold" | "ExtraBold" | "Black" | "ExtraBlack"
@@ -237,11 +238,11 @@ local Palette = {
 ---@alias Fonts {fonts: FontAttributes[]}
 
 ---@class FontAttributes
----@field is_fallback boolean
----@field is_synthetic boolean
----@field harfbuzz_features string[]
----@field assume_emoji_presentation boolean
----@field scale number
+---@field is_fallback? boolean
+---@field is_synthetic? boolean
+---@field harfbuzz_features? string[]
+---@field assume_emoji_presentation? boolean
+---@field scale? number
 local FontAttributes = {
 	-- The font family name
 	family = "JetBrains Mono",
@@ -351,7 +352,7 @@ local FontAttributes = {
 -- Show time since last response when waiting for a response. It is recommended to use <https://wezfurlong.org/wezterm/config/lua/pane/get_metadata.html#since_last_response_ms> instead.
 
 ---@class LeaderKey :KeyNoAction
----@field timeout_milliseconds u64
+---@field timeout_milliseconds? u64 - `leader` stays active until a keypress is registered (whether it matches a key binding or not), or until it has been active for the duration specified by `timeout_milliseconds`, at which point it will automatically cancel itself.
 
 ---@class HyperLinkRule
 ---@field regex string The regular expression to match

@@ -28,6 +28,6 @@
 ---@field paste fun(self: Pane, text: string): nil Sends the supplied text string to the input of the pane as if it were pasted from the clipboard, except that the clipboard is not involved. If the terminal attached to the pane is set to bracketed paste mode then the text will be sent as a bracketed paste. Otherwise the string will be streamed into the input in chunks of approximately 1KB each.
 ---@field send_paste fun(self: Pane, text: string): nil Sends text to the pane as though it was pasted. If bracketed paste mode is enabled then the text will be sent as a bracketed paste. Otherwise, it will be sent as-is.
 ---@field send_text fun(self: Pane, text: string): nil Sends text to the pane as-is.
----@field split fun(self: Pane): Pane TODO
+---@field split fun(self: Pane, opts: { args: string[], cwd: string; set_environment_variables: table<string, string>, domain: 'DefaultDomain' | { DomainName: string }, direction: 'Right' | 'Left' | 'Top' | 'Bottom', top_level: boolean, size: number }): Pane TODO
 ---@field tab fun(self: Pane): MuxTabObj? the MuxTab that contains this pane. Note that this method can return nil when pane is a GUI-managed overlay pane (such as the debug overlay), because those panes are not managed by the mux layer.
 ---@field window fun(self: Pane): MuxWindow Returns the MuxWindow that contains the tab that contains this pane.
